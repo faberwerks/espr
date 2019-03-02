@@ -11,12 +11,19 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.tag == "PlayerCharacter" && collision.GetComponent<PlayerMovement>().isInteracting && collision.GetComponent<PlayerMovement>().goal == gameObject)
+        
+        if (collision.tag == "PlayerCharacter" && collision.GetComponent<PlayerMovement>().isInteracting  && (collision.GetComponent<PlayerMovement>().goal == gameObject|| Input.GetKeyDown(KeyCode.Z)))
         {
-            Debug.Log("Interacting");
-            collision.GetComponent<PlayerMovement>().goal = null;
-            collision.GetComponent<PlayerMovement>().isInteracting = false;
-            FindObjectOfType<GameManager>().ChangeCycle();
+            Interacting(collision);
         }
+        
+    }
+
+    public void Interacting(Collider2D collision)
+    {
+        Debug.Log("Interacting");
+        collision.GetComponent<PlayerMovement>().goal = null;
+        collision.GetComponent<PlayerMovement>().isInteracting = false;
+        FindObjectOfType<GameManager>().ChangeCycle();
     }
 }

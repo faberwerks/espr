@@ -24,11 +24,7 @@ public class PlayerMovement : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, goal.transform.position, speed * Time.deltaTime);
         }
 
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            isInteracting = true;
-        }
-
+        
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             goal = null;
@@ -43,4 +39,6 @@ public class PlayerMovement : MonoBehaviour
             isInteracting = false;
         }
     }
+
+    
 }
