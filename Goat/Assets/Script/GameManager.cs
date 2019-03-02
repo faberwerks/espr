@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
             EraseBg();
             nightBg.SetActive(true);
         }
+
+        FindObjectOfType<PlayerAttribute>().hunger -= 10;
     }
 
     private void EraseBg()
