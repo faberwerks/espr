@@ -16,6 +16,7 @@ public class Interactable : MonoBehaviour
             Debug.Log("Interacting");
             collision.GetComponent<PlayerMovement>().goal = null;
             collision.GetComponent<PlayerMovement>().isInteracting = false;
+            FindObjectOfType<GameManager>().ChangeCycle();
         }
     }
 }
