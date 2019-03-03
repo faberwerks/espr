@@ -20,4 +20,9 @@ public class Button : MonoBehaviour
     {
         canvas.SetActive(false);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
