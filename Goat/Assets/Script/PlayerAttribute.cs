@@ -9,6 +9,7 @@ public class PlayerAttribute : MonoBehaviour
     public float energy;
     public float fun;
     public float social;
+    public float money;
 
     public float fullHunger;
     public float fullEnergy;
@@ -17,6 +18,7 @@ public class PlayerAttribute : MonoBehaviour
     public Image hungerBar;
     public Image energyBar;
     public Image funBar;
+    public Text moneyText;
 
     private void Start()
     {
@@ -27,10 +29,10 @@ public class PlayerAttribute : MonoBehaviour
 
     private void Update()
     {
-        
         hungerBar.fillAmount = hunger / fullHunger;
         energyBar.fillAmount = energy / fullEnergy;
         funBar.fillAmount = fun / fullFun;
+        moneyText.text = "Money: " + money.ToString();
     }
 
     private void CheckFull()

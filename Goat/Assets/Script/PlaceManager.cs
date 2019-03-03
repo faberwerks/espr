@@ -11,7 +11,8 @@ public class PlaceManager : MonoBehaviour
     public void ChangePlaces(int placeIndex)
     {
         currPlace.SetActive(false);
-        places[placeIndex].gameObject.SetActive(true);
+        places[placeIndex].SetActive(true);
+        currPlace = places[placeIndex];
     }
 
 }
