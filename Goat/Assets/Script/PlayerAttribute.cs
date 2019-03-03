@@ -11,6 +11,10 @@ public class PlayerAttribute : MonoBehaviour
     public float social;
     public float money;
 
+    private bool sick;
+
+    public Queue<Food> foods;
+
     public float fullHunger;
     public float fullEnergy;
     public float fullFun;
@@ -22,6 +26,8 @@ public class PlayerAttribute : MonoBehaviour
 
     private void Start()
     {
+        foods = new Queue<Food>();
+        sick = false;
         fullHunger = 100;
         fullEnergy = 100;
         fullFun = 100;
@@ -33,6 +39,7 @@ public class PlayerAttribute : MonoBehaviour
         energyBar.fillAmount = energy / fullEnergy;
         funBar.fillAmount = fun / fullFun;
         moneyText.text = "Money: " + money.ToString();
+        IsSick();
     }
 
     private void CheckFull()
@@ -49,7 +56,19 @@ public class PlayerAttribute : MonoBehaviour
         {
             fun = fullFun;
         }
-        
+        if (hunger <= 0)
+        {
+            hunger = 0;
+        }
+        if (energy <= 0)
+        {
+            energy = 0;
+        }
+        if (fun <= 0)
+        {
+            fun = 0;
+        }
+
     }
     public void SavePlayers()
     {
@@ -67,5 +86,73 @@ public class PlayerAttribute : MonoBehaviour
         social = data.social;
         money = data.money;
         dayCycle = data.dayCycle;
+    }
+
+    public void BuyFood(int value)
+    {
+        if (money >= 10)
+        {
+            for (int x = 0; x < value; x++)
+            {
+                money -= 10;
+                Food food = new Food();
+                food.timeLeght = 0;
+                foods.Enqueue(food);
+            }
+        }
+        else
+        {
+            Debug.Log("money not enough");
+        }
+    }
+
+    public void EatFood()
+    {
+        if(foods.Count <= 0)
+        {
+            Debug.Log("Food Empty");
+            return;
+        }
+        
+        Food food = foods.Dequeue();
+        if(food.timeLeght > 6)
+        {
+            sick = true;
+        }
+        hunger += 10;
+    }
+
+    public void FoodSpoil()
+    {
+        foreach(Food food in foods)
+        {
+            food.timeLeght += 1;
+        }
+    }
+
+    public void Sleep()
+    {
+        FindObjectOfType<GameManager>().ChangeCycle();
+        energy += 30;
+    }
+
+    private void IsSick()
+    {
+        FindObjectOfType<GameManager>().IsSick(sick);
+    }
+
+    public void BuyMed(int medPrice)
+    {
+        if(money < medPrice)
+        {
+            return;
+        }
+        money -= medPrice;
+        sick = false;
+    }
+
+    public void Play()
+    {
+        fun += 20;
     }
 }

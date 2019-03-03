@@ -26,4 +26,29 @@ public class Button : MonoBehaviour
         Application.Quit();
     }
 
+    public void BuyFood(int value)
+    {
+        FindObjectOfType<PlayerAttribute>().BuyFood(value);
+    }
+
+    public void EatFood()
+    {
+        FindObjectOfType<PlayerAttribute>().EatFood();
+    }
+
+    public void Sleep()
+    {
+        FindObjectOfType<PlayerAttribute>().Sleep();
+    }
+
+    public void BuyMed()
+    {
+        FindObjectOfType<PlayerAttribute>().BuyMed(20);
+    }
+
+    public void Play()
+    {
+        FindObjectOfType<GameManager>().ChangeCycle();
+        FindObjectOfType<PlayerAttribute>().Play();
+    }
 }
