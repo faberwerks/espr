@@ -2944,12 +2944,14 @@ MonoBehaviour:
   energy: 0
   fun: 0
   social: 0
+  money: 0
   fullHunger: 0
   fullEnergy: 0
   fullFun: 0
   hungerBar: {fileID: 1371177894}
   energyBar: {fileID: 821740862}
   funBar: {fileID: 1958964423}
+  moneyText: {fileID: 0}
 --- !u!1 &1371177890
 GameObject:
   m_ObjectHideFlags: 0

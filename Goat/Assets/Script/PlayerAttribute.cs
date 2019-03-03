@@ -51,4 +51,21 @@ public class PlayerAttribute : MonoBehaviour
         }
         
     }
+    public void SavePlayers()
+    {
+        SaveData.SavePlayer(this);
+    }
+
+    public void LoadPlayers()
+    {
+        int dayCycle;
+
+        PlayerData data = SaveData.LoadPlayer();
+        hunger = data.hunger;
+        energy = data.energy;
+        fun = data.fun;
+        social = data.social;
+        money = data.money;
+        dayCycle = data.dayCycle;
+    }
 }
