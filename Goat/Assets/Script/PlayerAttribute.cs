@@ -19,6 +19,8 @@ public class PlayerAttribute : MonoBehaviour
     public float fullEnergy;
     public float fullFun;
 
+    public float energyReplenish;
+
     public Image hungerBar;
     public Image energyBar;
     public Image funBar;
@@ -28,6 +30,7 @@ public class PlayerAttribute : MonoBehaviour
     {
         foods = new Queue<Food>();
         sick = false;
+        energyReplenish = 30;
         fullHunger = 100;
         fullEnergy = 100;
         fullFun = 100;
@@ -35,6 +38,8 @@ public class PlayerAttribute : MonoBehaviour
 
     private void Update()
     {
+        CheckFull();
+        ShoEvent();
         hungerBar.fillAmount = hunger / fullHunger;
         energyBar.fillAmount = energy / fullEnergy;
         funBar.fillAmount = fun / fullFun;
@@ -115,7 +120,7 @@ public class PlayerAttribute : MonoBehaviour
         }
         
         Food food = foods.Dequeue();
-        if(food.timeLeght > 6)
+        if(food.timeLeght > 4)
         {
             sick = true;
         }
@@ -133,7 +138,7 @@ public class PlayerAttribute : MonoBehaviour
     public void Sleep()
     {
         FindObjectOfType<GameManager>().ChangeCycle();
-        energy += 30;
+        energy += energyReplenish;
     }
 
     private void IsSick()
@@ -154,5 +159,13 @@ public class PlayerAttribute : MonoBehaviour
     public void Play()
     {
         fun += 20;
+    }
+
+    private void ShoEvent()
+    {
+        if(FindObjectOfType<GameManager>().dayCycle >= 4)
+        {
+            FindObjectOfType<ShoEvent>().StartEvent();
+        }
     }
 }

@@ -8,7 +8,5 @@ public class Place
 {
     public GameObject background;
 
-    public GameObject interactablePlace;
-
-    public GameObject[] arrowToOther;
+    public Sprite[] backgroundSprite;
 }

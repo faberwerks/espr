@@ -20,20 +20,21 @@ public class GameManager : MonoBehaviour
     public void ChangeCycle()
     {
         dayCycle++;
-        //if(dayCycle%3 == 0)
+        //if(dayCycle % 2 == 0)
         //{
-        //    EraseBg();
-        //    morningBg.SetActive(true);
+        //    foreach(GameObject place in FindObjectOfType<PlaceManager>().places)
+        //    {
+        //        Place placeNow = place.GetComponent<Place>();
+        //        placeNow.background.GetComponent<SpriteRenderer>().sprite = placeNow.backgroundSprite[0];
+        //    }
         //}
-        //else if (dayCycle % 3 == 1)
+        //if (dayCycle % 2 == 1)
         //{
-        //    EraseBg();
-        //    afternoonBg.SetActive(true);
-        //}
-        //else if (dayCycle % 3 == 2)
-        //{
-        //    EraseBg();
-        //    nightBg.SetActive(true);
+        //    foreach (GameObject place in FindObjectOfType<PlaceManager>().places)
+        //    {
+        //        Place placeNow = place.GetComponent<Place>();
+        //        placeNow.background.GetComponent<SpriteRenderer>().sprite = placeNow.backgroundSprite[1];
+        //    }
         //}
         FindObjectOfType<PlayerAttribute>().FoodSpoil();
         FindObjectOfType<PlayerAttribute>().hunger -= hungerDecrease;
