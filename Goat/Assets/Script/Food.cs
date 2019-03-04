@@ -6,4 +6,5 @@ using UnityEngine;
 public class Food 
 {
     public int timeLeght;
+    public bool isCooked;
 }
