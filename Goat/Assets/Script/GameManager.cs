@@ -12,9 +12,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        hungerDecrease = 10;
-        funDecrease = 10;
-        energyDecrease = 10;
+        hungerDecrease = 15;
+        funDecrease = 15;
+        energyDecrease = 15;
     }
 
     public void ChangeCycle()
