@@ -35,8 +35,8 @@ public class PlayerAttribute : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         foods = new Queue<Food>();
         sick = false;
-        energyReplenish = 40;
-        funReplenish = 40;
+        energyReplenish = 45;
+        funReplenish = 45;
         hungerReplenish = 30;
         fullHunger = 100;
         fullEnergy = 100;
@@ -100,13 +100,14 @@ public class PlayerAttribute : MonoBehaviour
         dayCycle = data.dayCycle;
     }
 
-    public void BuyFood(int value)
+    public void BuyFood()
     {
-        if (money >= 10)
+        int value = FindObjectOfType<BuyValue>().value;
+        if (money >= 150)
         {
             for (int x = 0; x < value; x++)
             {
-                money -= 10;
+                money -= 150;
                 Food food = new Food();
                 food.timeLeght = 0;
                 foods.Enqueue(food);
@@ -175,4 +176,21 @@ public class PlayerAttribute : MonoBehaviour
             FindObjectOfType<ShoEvent>().StartEvent();
         }
     }
+
+    public void IsComingBack()
+    {
+        if (gameManager.dayCycle % 2 == 0)
+        {
+            fun -= 30;
+            hunger -= 15;
+            energy -= 15;
+        }
+        if (gameManager.dayCycle % 2 == 1)
+        {
+            fun -= 30;
+            hunger -= 20;
+            energy -= 20;
+        }
+    }
+
 }

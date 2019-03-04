@@ -26,9 +26,9 @@ public class Button : MonoBehaviour
         Application.Quit();
     }
 
-    public void BuyFood(int value)
+    public void BuyFood()
     {
-        FindObjectOfType<PlayerAttribute>().BuyFood(value);
+        FindObjectOfType<PlayerAttribute>().BuyFood();
     }
 
     public void EatFood()
@@ -52,4 +52,13 @@ public class Button : MonoBehaviour
         FindObjectOfType<PlayerAttribute>().Play();
     }
 
+    public void AddFood()
+    {
+        FindObjectOfType<BuyValue>().Add();
+    }
+
+    public void SubstractFood()
+    {
+        FindObjectOfType<BuyValue>().Substract();
+    }
 }
