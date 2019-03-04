@@ -45,11 +45,11 @@ TagManager:
   - name: Background
     uniqueID: 3726395431
     locked: 0
-  - name: Interactable
-    uniqueID: 3522983077
-    locked: 0
   - name: Player
     uniqueID: 3631170011
+    locked: 0
+  - name: Interactable
+    uniqueID: 3522983077
     locked: 0
   - name: Menu
     uniqueID: 2569304897
