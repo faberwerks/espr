@@ -26,8 +26,13 @@ public class PlayerAttribute : MonoBehaviour
     public Image funBar;
     public Text moneyText;
 
+    public GameManager gameManager;
+   
+// inside sleep
+
     private void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         foods = new Queue<Food>();
         sick = false;
         energyReplenish = 30;
@@ -137,13 +142,14 @@ public class PlayerAttribute : MonoBehaviour
 
     public void Sleep()
     {
-        FindObjectOfType<GameManager>().ChangeCycle();
+        gameManager.ChangeCycle();
         energy += energyReplenish;
-    }
+        
+}
 
     private void IsSick()
     {
-        FindObjectOfType<GameManager>().IsSick(sick);
+        gameManager.IsSick(sick);
     }
 
     public void BuyMed(int medPrice)
@@ -163,7 +169,7 @@ public class PlayerAttribute : MonoBehaviour
 
     private void ShoEvent()
     {
-        if(FindObjectOfType<GameManager>().dayCycle >= 4)
+        if( gameManager.dayCycle >= 4)
         {
             FindObjectOfType<ShoEvent>().StartEvent();
         }

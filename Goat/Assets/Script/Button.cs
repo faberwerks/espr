@@ -51,4 +51,9 @@ public class Button : MonoBehaviour
         FindObjectOfType<GameManager>().ChangeCycle();
         FindObjectOfType<PlayerAttribute>().Play();
     }
+
+    public void LoadScene()
+    {
+        FindObjectOfType<PlaceManager>().ChangePlaces(FindObjectOfType<PlaceManager>().index);
+    }
 }

@@ -12,6 +12,7 @@ public class PlayerData
     public float social;
     public float money;
     public int dayCycle;
+    public int placeIndex;
 
     public PlayerData (PlayerAttribute player)
     {
@@ -20,11 +21,9 @@ public class PlayerData
         fun = player.fun;
         social = player.social;
         money = player.money;
+        dayCycle = player.gameManager.dayCycle;
+
     }
 
-    public PlayerData (GameManager player)
-    {
-        dayCycle = player.dayCycle;
-    }
 
 }
