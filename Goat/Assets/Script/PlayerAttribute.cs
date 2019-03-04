@@ -11,6 +11,8 @@ public class PlayerAttribute : MonoBehaviour
     public float social;
     public float money;
 
+    public bool ApathyLv3;
+
     private bool sick;
 
     public Queue<Food> foods;
