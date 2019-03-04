@@ -6,13 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour
 {
-    public int counter;
-
-    private void Start()
+    public void Start()
     {
-        counter = 0;
+        CallMusic();
     }
-
+    public void CallMusic()
+    {
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicHandler>().PlayMusic();
+    }
     public void GoToScene(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
@@ -35,38 +36,22 @@ public class Button : MonoBehaviour
 
     public void BuyFood()
     {
-        if(Refusal())
-        {
-            return;
-        }
         FindObjectOfType<PlayerAttribute>().BuyFood();
     }
 
     public void EatFood()
     {
-        if (Refusal())
-        {
-            return;
-        }
         FindObjectOfType<PlayerAttribute>().EatFood();
     }
 
     public void Sleep()
     {
-        if (Refusal())
-        {
-            return;
-        }
         FindObjectOfType<PlayerAttribute>().Sleep();
     }
 
     public void BuyMed()
     {
-        if (Refusal())
-        {
-            return;
-        }
-        FindObjectOfType<PlayerAttribute>().BuyMed(500);
+        FindObjectOfType<PlayerAttribute>().BuyMed(20);
     }
 
     public void Play()
@@ -77,48 +62,12 @@ public class Button : MonoBehaviour
 
     public void AddFood()
     {
-        if (Refusal())
-        {
-            return;
-        }
         FindObjectOfType<BuyValue>().Add();
     }
 
     public void SubstractFood()
     {
-        if (Refusal())
-        {
-            return;
-        }
         FindObjectOfType<BuyValue>().Substract();
     }
-
-    public bool Refusal()
-    {
-        if (FindObjectOfType<State>().apathyLv >= 2)
-        {
-            int num = Random.Range(0, 100);
-            if(counter == 0)
-            {
-                counter++;
-                return true;
-            }
-            if (num > 50)
-            {
-                return true;
-            }
-            counter--;
-            return false;
-        }
-        else if (FindObjectOfType<State>().apathyLv >= 1)
-        {
-            int num = Random.Range(0, 100);
-            if(num > 50)
-            {
-                return true;
-            }
-            return false;
-        }
-        return false;
-    }
+    
 }

@@ -11,8 +11,6 @@ public class PlayerAttribute : MonoBehaviour
     public float social;
     public float money;
 
-    public bool ApathyLv3;
-
     private bool sick;
 
     public Queue<Food> foods;
@@ -120,7 +118,7 @@ public class PlayerAttribute : MonoBehaviour
             Debug.Log("money not enough");
         }
     }
-
+    
     public void EatFood()
     {
         if(foods.Count <= 0)
