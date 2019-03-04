@@ -191,6 +191,7 @@ public class PlayerAttribute : MonoBehaviour
             hunger -= 20;
             energy -= 20;
         }
+        gameManager.ChangeCycle();
     }
 
 }
