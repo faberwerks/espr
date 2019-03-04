@@ -20,22 +20,23 @@ public class GameManager : MonoBehaviour
     public void ChangeCycle()
     {
         dayCycle++;
-        //if(dayCycle % 2 == 0)
-        //{
-        //    foreach(GameObject place in FindObjectOfType<PlaceManager>().places)
-        //    {
-        //        Place placeNow = place.GetComponent<Place>();
-        //        placeNow.background.GetComponent<SpriteRenderer>().sprite = placeNow.backgroundSprite[0];
-        //    }
-        //}
-        //if (dayCycle % 2 == 1)
-        //{
-        //    foreach (GameObject place in FindObjectOfType<PlaceManager>().places)
-        //    {
-        //        Place placeNow = place.GetComponent<Place>();
-        //        placeNow.background.GetComponent<SpriteRenderer>().sprite = placeNow.backgroundSprite[1];
-        //    }
-        //}
+        if (dayCycle % 2 == 0)
+        {
+            FindObjectOfType<ShoEvent>().StartEvent();
+            //foreach (GameObject place in FindObjectOfType<PlaceManager>().places)
+            //{
+            //    Place placeNow = place.GetComponent<Place>();
+            //    placeNow.background.GetComponent<SpriteRenderer>().sprite = placeNow.backgroundSprite[0];
+            //}
+        }
+        if (dayCycle % 2 == 1)
+        {
+            //foreach (GameObject place in FindObjectOfType<PlaceManager>().places)
+            //{
+            //    Place placeNow = place.GetComponent<Place>();
+            //    placeNow.background.GetComponent<SpriteRenderer>().sprite = placeNow.backgroundSprite[1];
+            //}
+        }
         FindObjectOfType<PlayerAttribute>().FoodSpoil();
         FindObjectOfType<PlayerAttribute>().hunger -= hungerDecrease;
         FindObjectOfType<PlayerAttribute>().fun -= funDecrease;

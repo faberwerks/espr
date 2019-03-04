@@ -6,6 +6,6 @@ public class NewGameEvent : MonoBehaviour
 {
     public void StartEvent()
     {
-        FindObjectOfType<PlayerAttribute>().funReplenish = 20;
+        FindObjectOfType<PlayerAttribute>().funReplenish -= 5;
     }
 }

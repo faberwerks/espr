@@ -12,6 +12,8 @@ public class DialogueManager : MonoBehaviour
     public Text nameNPC;
     public Text dialogueText;
 
+    public Animator anim;
+
     private void Start()
     {
         sentences = new Queue<string>();
@@ -19,6 +21,8 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        anim.SetBool("IsOpen", true);
+
         tempDialogue = dialogue;
         nameNPC.text = dialogue.nameNPC;
         sentences.Clear();
@@ -39,6 +43,7 @@ public class DialogueManager : MonoBehaviour
             {
                 choices.SetActive(true);
             }
+            anim.SetBool("IsOpen", false);
             return;
         }
 
@@ -49,7 +54,6 @@ public class DialogueManager : MonoBehaviour
 
     public void DeleteChoices()
     {
-
         if (tempDialogue != null)
         {
             foreach (GameObject choices in tempDialogue.choices)
