@@ -8,6 +8,8 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<string> sentences;
     private Dialogue tempDialogue;
+
+    private bool angry;
     
     public Text nameNPC;
     public Text dialogueText;
@@ -39,11 +41,15 @@ public class DialogueManager : MonoBehaviour
     {
         if(sentences.Count == 0)
         {
-            foreach (GameObject choices in tempDialogue.choices)
+            Angry();
+            if (!angry)
             {
-                choices.SetActive(true);
+                foreach (GameObject choices in tempDialogue.choices)
+                {
+                    choices.SetActive(true);
+                }
             }
-            if(FindObjectOfType<State>().angryLv >= 1 && tempDialogue.aggresiveChoices != null)
+            if (FindObjectOfType<State>().angryLv >= 1 && tempDialogue.aggresiveChoices != null)
             {
                 tempDialogue.aggresiveChoices.SetActive(true);
             }
@@ -60,14 +66,34 @@ public class DialogueManager : MonoBehaviour
     {
         if (tempDialogue != null)
         {
-            foreach (GameObject choices in tempDialogue.choices)
+            if (!angry)
             {
-                choices.SetActive(false);
+                foreach (GameObject choices in tempDialogue.choices)
+                {
+                    choices.SetActive(false);
+                }
             }
             if (tempDialogue.aggresiveChoices != null)
             {
                 tempDialogue.aggresiveChoices.SetActive(false);
             }
+        }
+    }
+
+    public void Angry()
+    {
+        int num = Random.Range(0, 100);
+        if(FindObjectOfType<State>().angryLv >= 3)
+        {
+            angry = true;
+        }
+        else if (FindObjectOfType<State>().angryLv >= 2 && num > 80)
+        {
+            angry = true;
+        }
+        else
+        {
+            angry = false;
         }
     }
 }

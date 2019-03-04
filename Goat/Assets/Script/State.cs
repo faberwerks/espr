@@ -13,7 +13,7 @@ public class State : MonoBehaviour
         playerAttribute = FindObjectOfType<PlayerAttribute>();
     }
 
-    private void Update()
+    public void UpdateState()
     {
         if (playerAttribute.energy <= 10 || playerAttribute.fun <= 10)
         {
@@ -50,4 +50,5 @@ public class State : MonoBehaviour
         }
     }
 
+    
 }

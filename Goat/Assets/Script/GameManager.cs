@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     public void ChangeCycle()
     {
+        FindObjectOfType<State>().UpdateState();
         dayCycle++;
         if (dayCycle % 2 == 0)
         {
