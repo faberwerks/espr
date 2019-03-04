@@ -8,7 +8,7 @@ public class ShoEvent : MonoBehaviour
     {
         if(FindObjectOfType<GameManager>().dayCycle % 2 == 1)
         {
-            FindObjectOfType<PlayerAttribute>().energyReplenish = 10;
+            FindObjectOfType<PlayerAttribute>().energyReplenish = 20;
         }
     }
 }

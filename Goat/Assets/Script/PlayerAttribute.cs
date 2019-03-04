@@ -20,6 +20,8 @@ public class PlayerAttribute : MonoBehaviour
     public float fullFun;
 
     public float energyReplenish;
+    public float funReplenish;
+    public float hungerReplenish;
 
     public Image hungerBar;
     public Image energyBar;
@@ -27,15 +29,15 @@ public class PlayerAttribute : MonoBehaviour
     public Text moneyText;
 
     public GameManager gameManager;
-   
-// inside sleep
 
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         foods = new Queue<Food>();
         sick = false;
-        energyReplenish = 30;
+        energyReplenish = 40;
+        funReplenish = 40;
+        hungerReplenish = 30;
         fullHunger = 100;
         fullEnergy = 100;
         fullFun = 100;
@@ -129,7 +131,7 @@ public class PlayerAttribute : MonoBehaviour
         {
             sick = true;
         }
-        hunger += 10;
+        hunger += hungerReplenish;
     }
 
     public void FoodSpoil()
@@ -144,8 +146,7 @@ public class PlayerAttribute : MonoBehaviour
     {
         gameManager.ChangeCycle();
         energy += energyReplenish;
-        
-}
+    }
 
     private void IsSick()
     {
@@ -164,12 +165,12 @@ public class PlayerAttribute : MonoBehaviour
 
     public void Play()
     {
-        fun += 20;
+        fun += funReplenish;
     }
 
     private void ShoEvent()
     {
-        if( gameManager.dayCycle >= 4)
+        if(gameManager.dayCycle >= 6)
         {
             FindObjectOfType<ShoEvent>().StartEvent();
         }
