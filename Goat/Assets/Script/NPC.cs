@@ -8,7 +8,7 @@ public class NPC : MonoBehaviour
 
     public void  TalkToNPC()
     {
-        FindObjectOfType<DialogueManager>().DeleteChoices();
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+            FindObjectOfType<DialogueManager>().DeleteChoices();
+            FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
     }
 }

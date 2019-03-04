@@ -43,6 +43,10 @@ public class DialogueManager : MonoBehaviour
             {
                 choices.SetActive(true);
             }
+            if(FindObjectOfType<State>().angryLv >= 1 && tempDialogue.aggresiveChoices != null)
+            {
+                tempDialogue.aggresiveChoices.SetActive(true);
+            }
             anim.SetBool("IsOpen", false);
             return;
         }
@@ -59,6 +63,10 @@ public class DialogueManager : MonoBehaviour
             foreach (GameObject choices in tempDialogue.choices)
             {
                 choices.SetActive(false);
+            }
+            if (tempDialogue.aggresiveChoices != null)
+            {
+                tempDialogue.aggresiveChoices.SetActive(false);
             }
         }
     }
